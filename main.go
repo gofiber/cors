@@ -14,9 +14,9 @@ import (
 
 // Config ...
 type Config struct {
-	// Skip defines a function to skip middleware.
+	// Filter defines a function to skip middleware.
 	// Optional. Default: nil
-	Skip func(*fiber.Ctx) bool
+	Filter func(*fiber.Ctx) bool
 	// Optional. Default value []string{"*"}.
 	AllowOrigins []string
 	// Optional. Default value []string{"GET","POST","HEAD","PUT","DELETE","PATCH"}
@@ -57,8 +57,8 @@ func New(config ...Config) func(*fiber.Ctx) {
 	maxAge := strconv.Itoa(cfg.MaxAge)
 	// Middleware function
 	return func(c *fiber.Ctx) {
-		// Skip middleware if Skip returns true
-		if cfg.Skip != nil && cfg.Skip(c) {
+		// Filter request to skip middleware
+		if cfg.Filter != nil && cfg.Filter(c) {
 			c.Next()
 			return
 		}
