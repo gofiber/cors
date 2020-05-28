@@ -1,3 +1,9 @@
+# CORS
+
+![Test](https://github.com/gofiber/cors/workflows/Test/badge.svg)
+![Security](https://github.com/gofiber/cors/workflows/Security/badge.svg)
+![Linter](https://github.com/gofiber/cors/workflows/Linter/badge.svg)
+
 ### Install
 ```
 go get -u github.com/gofiber/fiber
